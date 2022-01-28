@@ -34,7 +34,7 @@ public class ElementItem extends ItemBase{
     public Phase phase;
 
     public boolean radioactive;
-    public boolean neutral;
+    public boolean natural;
     public boolean metal;
     public boolean nonMetal;
     public boolean metalliod;
@@ -43,9 +43,48 @@ public class ElementItem extends ItemBase{
     public Type type;
 
     public double atomicRadius;
+    public double electronegativity;
+    public double firstIonization;
+    public double density;
+    public double meltingPoint;
+    public double boilingPoint;
+    public double numberOfIsotopes;
+    public String discoverer;
+    public int year;
+    public double specificHeat;
+    public int numberOfShells;
+    public int numberOfValance;
 
     public ElementItem(int atomicNumber, String elementName, String symbol, double atomicMass, int numberOfNeutrons, int numberOfProtons, int numberOfElectrons, int period, int group, Phase phase, boolean radioactive, boolean natural, boolean metal, boolean nonMetal, boolean metalloid, Type type, double atomicRadius, double electroNegativity, double firstIonization, double density, double meltingPoint, double boilingPoint, double numberOfIsotopes, String discoverer, int year, double specificHeat, int numberOfShells, int numberOfValence) {
         super(elementName, new FabricItemSettings());
+        this.atomicNumber = atomicNumber;
+        this.internalName = elementName;
+        this.symbol = symbol;
+        this.atomicMass = atomicMass;
+        this.numberOfNeutrons = numberOfNeutrons;
+        this.numberOfProtons = numberOfProtons;
+        this.numberOfElectrons = numberOfElectrons;
+        this.period = period;
+        this.group = group;
+        this.phase = phase;
+        this.radioactive = radioactive;
+        this.natural = natural;
+        this.metal = metal;
+        this.nonMetal = nonMetal;
+        this.metalliod = metalloid;
+        this.type = type;
+        this.atomicRadius = atomicRadius;
+        this.electronegativity = electroNegativity;
+        this.firstIonization = firstIonization;
+        this.density = density;
+        this.meltingPoint = meltingPoint;
+        this.boilingPoint = boilingPoint;
+        this.numberOfIsotopes = numberOfIsotopes;
+        this.discoverer = discoverer;
+        this.year = year;
+        this.specificHeat = specificHeat;
+        this.numberOfShells = numberOfShells;
+        this.numberOfValance = numberOfValence;
     }
 
 
