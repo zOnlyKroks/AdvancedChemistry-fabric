@@ -1,5 +1,33 @@
 {
   "itemGroup.advancedchemistry.general" : "AdvancedChemistry",
+
   "item.advancedchemistry.hydrogen" : "Hydrogen",
-  "item.advancedchemistry.hydrogen.tooltip" : "Fun thing that goes BOOOOM"
+  "item.advancedchemistry.hydrogen.tooltip" : "Fun thing that goes BOOOOM",
+
+  "item.advancedchemistry.helium": "Helium",
+  "item.advancedchemistry.helium.tooltip": "Makes your voice go funny",
+
+  "item.advancedchemistry.lithium": "Lithium",
+  "item.advancedchemistry.lithium.tooltip": "Guess what is in your batteries",
+
+  "item.advancedchemistry.beryllium": "Beryllium",
+  "item.advancedchemistry.beryllium.tooltip": "If it flies it contains Beryllium",
+
+  "item.advancedchemistry.boron": "Boron",
+  "item.advancedchemistry.boron.tooltip": "When you want to turn off the reactor",
+
+  "item.advancedchemistry.carbon": "Carbon",
+  "item.advancedchemistry.carbon.tooltip": "This element is why you exist",
+
+  "item.advancedchemistry.nitrogen": "Nitrogen",
+  "item.advancedchemistry.nitrogen.tooltip": "When you want explosives",
+
+  "item.advancedchemistry.oxygen": "Oxygen",
+  "item.advancedchemistry.oxygen.tooltip": "Breathing is good ya know?",
+
+  "item.advancedchemistry.flourine": "Flourine",
+  "item.advancedchemistry.flourine.tooltip": "When you want to get acids here you go",
+
+  "item.advancedchemistry.neon": "Neon",
+  "item.advancedchemistry.neon.tooltip": "Can glow funny"
 }

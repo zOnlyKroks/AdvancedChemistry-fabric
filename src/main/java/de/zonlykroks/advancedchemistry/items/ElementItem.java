@@ -6,6 +6,7 @@ import de.zonlykroks.advancedchemistry.items.enums.Type;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.item.TooltipContext;
+import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
@@ -13,10 +14,7 @@ import net.minecraft.util.Formatting;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-import java.io.*;
-import java.nio.file.Path;
 import java.util.List;
-import java.util.Locale;
 
 public class ElementItem extends ItemBase{
 
@@ -88,25 +86,7 @@ public class ElementItem extends ItemBase{
     }
 
 
-    /*@Override
-    public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
-        if(!(entity instanceof PlayerEntity)) return;
-        System.out.println(stack.getItem() + "");
-        if(stack.getItem() != ModItems.hydrogen) return;
 
-        int i = 1;
-        while(i <= 9) {
-            ItemStack stack1 = ((PlayerEntity) entity).getInventory().getStack(i);
-            if(stack1.getItem() == Items.FLINT_AND_STEEL) {
-                double x = entity.getX();
-                double y = entity.getY();
-                double z = entity.getZ();
-                world.createExplosion(entity, x,y,z, 2, Explosion.DestructionType.BREAK);
-                stack.setCount(0);
-            }
-            i++;
-        }
-    }*/
 
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
