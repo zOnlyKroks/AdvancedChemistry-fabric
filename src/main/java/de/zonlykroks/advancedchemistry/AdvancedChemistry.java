@@ -36,9 +36,9 @@ public class AdvancedChemistry implements ModInitializer {
         ModScreenHandlers screenHandlers = new ModScreenHandlers();
         ScreenRegistry.register(ModScreenHandlers.chemicalReactorScreenHandlerScreenHandlerType, ChemicalReactorScreen::new);
 
-        //TODO: Input Amounts!!!!
         recipeSerializer = Registry.register(Registry.RECIPE_SERIALIZER, ChemicalReactorRecipeSerializer.ID,
                 ChemicalReactorRecipeSerializer.INSTANCE);
         recipeType = Registry.register(Registry.RECIPE_TYPE, new Identifier("advancedchemistry", ChemicalReactorRecipe.Type.ID), ChemicalReactorRecipe.Type.INSTANCE);
+        blocks.registerEnergy();
     }
 }

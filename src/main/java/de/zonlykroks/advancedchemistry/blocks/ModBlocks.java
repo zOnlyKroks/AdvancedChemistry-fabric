@@ -23,4 +23,9 @@ public class ModBlocks {
 
     public static BlockEntityType<ChemicalReactorTileEntity> chemicalReactorTileEntityBlockEntityType = Registry
             .register(Registry.BLOCK_ENTITY_TYPE, new Identifier("advancedchemistry", "chemicalreactor"), FabricBlockEntityTypeBuilder.create(ChemicalReactorTileEntity::new,reactorBlock).build(null));
+
+    public void registerEnergy() {
+        EnergyStorage.SIDED.registerForBlockEntity((ChemicalReactorTileEntity, direction) -> ChemicalReactorTileEntity.energyStorage, chemicalReactorTileEntityBlockEntityType);
+    }
+
 }

@@ -7,6 +7,7 @@ import de.zonlykroks.advancedchemistry.blocks.tileentities.TileEntityBase;
 import de.zonlykroks.advancedchemistry.blocks.tileentities.chemicalreactor.gui.ChemicalReactorScreenHandler;
 import de.zonlykroks.advancedchemistry.blocks.tileentities.chemicalreactor.recipe.ChemicalReactorRecipe;
 import de.zonlykroks.advancedchemistry.items.ModItems;
+import net.fabricmc.fabric.api.transfer.v1.transaction.Transaction;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
@@ -26,6 +27,7 @@ import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
+import team.reborn.energy.api.EnergyStorage;
 import team.reborn.energy.api.base.SimpleEnergyStorage;
 
 import java.util.Optional;
@@ -71,6 +73,11 @@ public class ChemicalReactorTileEntity extends TileEntityBase {
         }
     };
 
+    @Nullable
+    @Override
+    public SimpleEnergyStorage getEnergyStorage() {
+        return energyStorage;
+    }
 
     @Override
     public DefaultedList<ItemStack> getItems() {
@@ -101,11 +108,14 @@ public class ChemicalReactorTileEntity extends TileEntityBase {
     }
 
     public void tick(World world, BlockPos pos, BlockState state, ChemicalReactorTileEntity te) {
-        //Check Energy
-        if(hasRecipe(te)) {
+        if(hasRecipe(te) && energyStorage.amount >= 10) {
             te.progress++;
             if(te.progress > te.maxProgress) {
                 craftItem(te);
+            }
+            try (var transaction = Transaction.openOuter()) {
+                energyStorage.amount -= 10;
+                transaction.commit();
             }
         } else {
             te.resetProgress();
@@ -123,8 +133,8 @@ public class ChemicalReactorTileEntity extends TileEntityBase {
                 .getFirstMatch(AdvancedChemistry.recipeType, inventory, world);
 
         if(match.isPresent()) {
-            entity.removeStack(0,1);
-            entity.removeStack(1,1);
+            entity.removeStack(0,match.get().getInputNumberA());
+            entity.removeStack(1,match.get().getInputNumberB());
             entity.setStack(2, new ItemStack(match.get().getOutput().copy().getItem(),
                     entity.getStack(2).getCount() + match.get().getOutput().copy().getCount()));
             entity.resetProgress();
@@ -148,11 +158,16 @@ public class ChemicalReactorTileEntity extends TileEntityBase {
 
         return match.isPresent()
                 && canInsertAmountIntoOutputSlot(inventory)
+                && hasEnoughItems(inventory,match)
                 && canInsertItemIntoOutputSlot(inventory, match.get().getOutput());
     }
 
     private static boolean canInsertItemIntoOutputSlot(SimpleInventory inventory, ItemStack output) {
         return inventory.getStack(2).getItem() == output.getItem() || inventory.getStack(2).isEmpty();
+    }
+
+    private static boolean hasEnoughItems(SimpleInventory inventory, Optional<ChemicalReactorRecipe> match) {
+        return inventory.getStack(0).getCount() == match.get().getInputNumberA() && inventory.getStack(1).getCount() == match.get().getInputNumberB();
     }
 
     private static boolean canInsertAmountIntoOutputSlot(SimpleInventory inventory) {

@@ -23,17 +23,29 @@ public class ChemicalReactorRecipe implements Recipe<SimpleInventory> {
 
     private final ItemStack outPutStack;
 
-    public ChemicalReactorRecipe(Ingredient inputA, Ingredient inputB,ItemStack outputStack, Identifier id) {
+    private final int inputNumberA, inputNumberB;
+
+    public ChemicalReactorRecipe(Ingredient inputA, Ingredient inputB,ItemStack outputStack, Identifier id, int inputNumberA, int inputNumberB) {
         this.id = id;
         this.inputA = inputA;
         this.inputB = inputB;
         this.outPutStack = outputStack;
+        this.inputNumberA = inputNumberA;
+        this.inputNumberB = inputNumberB;
     }
 
     @Override
     public boolean matches(SimpleInventory inv, World world) {
         if(inv.size() < 2) return false;
         return inputA.test(inv.getStack(0)) && inputB.test(inv.getStack(1));
+    }
+
+    public int getInputNumberA() {
+        return inputNumberA;
+    }
+
+    public int getInputNumberB() {
+        return inputNumberB;
     }
 
     @Override

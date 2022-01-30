@@ -7,5 +7,7 @@
     "item": "advancedchemistry:carbon"
   },
   "outputItem": "advancedchemistry:co2",
-  "outputAmount": "1"
+  "outputAmount": "1",
+  "inputNumberA": 2,
+  "inputNumberB": 1
 }
