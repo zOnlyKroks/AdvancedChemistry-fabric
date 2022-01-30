@@ -3,13 +3,20 @@ package de.zonlykroks.advancedchemistry.items;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import de.zonlykroks.advancedchemistry.AdvancedChemistry;
 import de.zonlykroks.advancedchemistry.items.enums.Phase;
 import de.zonlykroks.advancedchemistry.items.enums.Type;
+import de.zonlykroks.advancedchemistry.items.item.periodicsystem.PeriodicSystemItem;
 import lombok.NoArgsConstructor;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.event.client.ClientTickCallback;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
+import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.item.Item;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
+import org.lwjgl.system.CallbackI;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -23,6 +30,10 @@ import java.util.Locale;
 public class ModItems {
 
     public static List<ItemBase> elements = new ArrayList<>();
+
+    public static Item periodicSystemItem = new PeriodicSystemItem();
+
+    public static Item co2 = Registry.register(Registry.ITEM, new Identifier("advancedchemistry", "co2"), new Item(new FabricItemSettings().group(AdvancedChemistry.ITEM_GROUP)));
 
     public static ElementItem hydrogen = new ElementItem(1,"hydrogen", "H",1.007,0,1,1,1,1,Phase.GAS,false,true,false,true,false,Type.NONMETAL,0.79,2.2,13.5984,0.0000899,14.175,20.28,3,"Cavendish", 1766,14.304,1,1);
 

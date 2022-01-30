@@ -16,7 +16,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class ElementItem extends ItemBase{
+public class ElementItem extends ItemBase implements IChemical{
 
     private int atomicNumber;
     private double atomicMass;
@@ -85,19 +85,22 @@ public class ElementItem extends ItemBase{
         this.numberOfValance = numberOfValence;
     }
 
-
-
-
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
-        tooltip.add(new TranslatableText("item.advancedchemistry." + getInternalName() + ".tooltip").formatted(Formatting.GRAY));
+        tooltip.add(new TranslatableText("item.advancedchemistry." + getChemicalName() + ".tooltip").formatted(Formatting.GRAY));
     }
 
     public int getAtomicNumber() {
         return atomicNumber;
     }
 
-    public String getInternalName() {
-        return internalName;
+    @Override
+    public String getAbbreviation() {
+        return this.symbol;
+    }
+
+    @Override
+    public String getChemicalName() {
+        return this.internalName;
     }
 }

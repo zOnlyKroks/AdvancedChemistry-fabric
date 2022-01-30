@@ -11,7 +11,7 @@
   "environment": "*",
   "entrypoints": {
     "client": [
-      "de.zonlykroks.advancedchemistry.client.AdvancedChemistryClient"
+      "de.zonlykroks.advancedchemistry.client.ClientModInitializer"
     ],
     "main": [
       "de.zonlykroks.advancedchemistry.AdvancedChemistry"

@@ -1,0 +1,11 @@
+{
+  "type": "advancedchemistry:chemical_reactor_recipe",
+  "inputA" : {
+    "item": "advancedchemistry:oxygen"
+  },
+  "inputB": {
+    "item": "advancedchemistry:carbon"
+  },
+  "outputItem": "advancedchemistry:co2",
+  "outputAmount": "1"
+}
