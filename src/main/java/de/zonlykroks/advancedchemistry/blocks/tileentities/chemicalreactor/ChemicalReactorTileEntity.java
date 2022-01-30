@@ -123,6 +123,7 @@ public class ChemicalReactorTileEntity extends TileEntityBase {
     }
 
     private static void craftItem(ChemicalReactorTileEntity entity) {
+        if(entity.world == null) return;
         World world = entity.world;
         SimpleInventory inventory = new SimpleInventory(entity.inventory.size());
         for (int i = 0; i < entity.inventory.size(); i++) {
@@ -147,19 +148,22 @@ public class ChemicalReactorTileEntity extends TileEntityBase {
 
 
     private boolean hasRecipe(ChemicalReactorTileEntity entity) {
-        World world = entity.world;
-        SimpleInventory inventory = new SimpleInventory(entity.inventory.size());
-        for (int i = 0; i < entity.inventory.size(); i++) {
-            inventory.setStack(i, entity.getStack(i));
+        if(entity.world != null) {
+            World world = entity.world;
+            SimpleInventory inventory = new SimpleInventory(entity.inventory.size());
+            for (int i = 0; i < entity.inventory.size(); i++) {
+                inventory.setStack(i, entity.getStack(i));
+            }
+
+            Optional<ChemicalReactorRecipe> match = world.getRecipeManager()
+                    .getFirstMatch(AdvancedChemistry.recipeType, inventory, world);
+
+            return match.isPresent()
+                    && canInsertAmountIntoOutputSlot(inventory)
+                    && hasEnoughItems(inventory,match)
+                    && canInsertItemIntoOutputSlot(inventory, match.get().getOutput());
         }
-
-        Optional<ChemicalReactorRecipe> match = world.getRecipeManager()
-                .getFirstMatch(AdvancedChemistry.recipeType, inventory, world);
-
-        return match.isPresent()
-                && canInsertAmountIntoOutputSlot(inventory)
-                && hasEnoughItems(inventory,match)
-                && canInsertItemIntoOutputSlot(inventory, match.get().getOutput());
+        return false;
     }
 
     private static boolean canInsertItemIntoOutputSlot(SimpleInventory inventory, ItemStack output) {
