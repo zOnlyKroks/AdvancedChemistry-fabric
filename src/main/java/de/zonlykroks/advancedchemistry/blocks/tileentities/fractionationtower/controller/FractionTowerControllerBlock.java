@@ -1,8 +1,11 @@
-package de.zonlykroks.advancedchemistry.blocks.tileentities.chemicalreactor;
+package de.zonlykroks.advancedchemistry.blocks.tileentities.fractionationtower.controller;
 
 import de.zonlykroks.advancedchemistry.blocks.ModBlocks;
-import de.zonlykroks.advancedchemistry.blocks.tileentities.fractionationtower.controller.FractionTowerControllerBlockEntity;
-import net.minecraft.block.*;
+import de.zonlykroks.advancedchemistry.blocks.tileentities.chemicalreactor.ChemicalReactorTileEntity;
+import net.minecraft.block.BlockEntityProvider;
+import net.minecraft.block.BlockRenderType;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.BlockWithEntity;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
@@ -16,9 +19,10 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public class ChemicalReactorBlock extends BlockWithEntity implements BlockEntityProvider{
+public class FractionTowerControllerBlock extends BlockWithEntity implements BlockEntityProvider {
 
-    public ChemicalReactorBlock(Settings settings) {
+
+    public FractionTowerControllerBlock(Settings settings) {
         super(settings);
     }
 
@@ -56,12 +60,12 @@ public class ChemicalReactorBlock extends BlockWithEntity implements BlockEntity
     @Nullable
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new ChemicalReactorTileEntity(pos,state);
+        return new FractionTowerControllerBlockEntity(pos,state);
     }
 
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return checkType(type, ModBlocks.chemicalReactorTileEntityBlockEntityType, (level0, pos, state0, blockEntity) -> blockEntity.tick(level0,pos,state0,blockEntity));
+        return checkType(type, ModBlocks.fractionTowerControllerBlockEntityBlockEntityType, (level0, pos, state0, blockEntity) -> blockEntity.tick(level0,pos,state0,blockEntity));
     }
 }
