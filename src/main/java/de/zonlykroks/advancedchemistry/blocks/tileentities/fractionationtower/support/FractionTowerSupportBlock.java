@@ -1,13 +1,13 @@
 package de.zonlykroks.advancedchemistry.blocks.tileentities.fractionationtower.support;
 
 import de.zonlykroks.advancedchemistry.blocks.ModBlocks;
-import net.minecraft.block.BlockEntityProvider;
-import net.minecraft.block.BlockRenderType;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.BlockWithEntity;
+import de.zonlykroks.advancedchemistry.blocks.tileentities.fractionationtower.controller.FractionTowerControllerBlock;
+import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;

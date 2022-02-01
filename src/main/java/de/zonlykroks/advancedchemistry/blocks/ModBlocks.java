@@ -39,8 +39,16 @@ public class ModBlocks {
             .register(Registry.BLOCK_ENTITY_TYPE, new Identifier("advancedchemistry", "fractrioncontroller"), FabricBlockEntityTypeBuilder.create(FractionTowerControllerBlockEntity::new,fractionTowerControllerBlock).build(null));
 
 
+
     public static FractionTowerSupportBlock fractionTowerSupportBlock = Registry.register(Registry.BLOCK, new Identifier("advancedchemistry", "fractrionsupport"), new FractionTowerSupportBlock(FabricBlockSettings.of(Material.METAL)));
+
+
     public static BlockItem fractionTowerSupportItem = Registry.register(Registry.ITEM, new Identifier("advancedchemistry", "fractionitemsupportblockitem"), new BlockItem(fractionTowerSupportBlock, new FabricItemSettings().group(AdvancedChemistry.ITEM_GROUP)));
     public static BlockEntityType<FractionTowerSupportBlockEntity> fractionTowerSupportBlockEntityBlockEntityType = Registry
             .register(Registry.BLOCK_ENTITY_TYPE, new Identifier("advancedchemistry", "fractrionsupport"), FabricBlockEntityTypeBuilder.create(FractionTowerSupportBlockEntity::new,fractionTowerSupportBlock).build(null));
+
+
+    public void registerMultiblocks() {
+        fractionTowerControllerBlock.setDependencies(new Block[]{fractionTowerSupportBlock});
+    }
 }

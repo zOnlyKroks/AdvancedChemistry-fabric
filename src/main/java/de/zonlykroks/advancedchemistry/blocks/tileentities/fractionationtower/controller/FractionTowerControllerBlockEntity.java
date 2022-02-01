@@ -2,6 +2,7 @@ package de.zonlykroks.advancedchemistry.blocks.tileentities.fractionationtower.c
 
 import de.zonlykroks.advancedchemistry.blocks.ModBlocks;
 import de.zonlykroks.advancedchemistry.blocks.tileentities.chemicalreactor.ChemicalReactorTileEntity;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
@@ -26,6 +27,7 @@ public class FractionTowerControllerBlockEntity extends BlockEntity {
     }
 
     public void tick(World world, BlockPos pos, BlockState state, FractionTowerControllerBlockEntity te) {
-
+        FractionTowerControllerBlock block = (FractionTowerControllerBlock) state.getBlock();
+        System.out.println(block.isAssembled());
     }
 }

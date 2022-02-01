@@ -40,5 +40,6 @@ public class AdvancedChemistry implements ModInitializer {
                 ChemicalReactorRecipeSerializer.INSTANCE);
         recipeType = Registry.register(Registry.RECIPE_TYPE, new Identifier("advancedchemistry", ChemicalReactorRecipe.Type.ID), ChemicalReactorRecipe.Type.INSTANCE);
         blocks.registerEnergy();
+        blocks.registerMultiblocks();
     }
 }
