@@ -50,5 +50,6 @@ public class ModBlocks {
 
     public void registerMultiblocks() {
         fractionTowerControllerBlock.setDependencies(new Block[]{fractionTowerSupportBlock});
+        fractionTowerSupportBlock.setDependencyBlocks(new Block[]{fractionTowerSupportBlock,fractionTowerControllerBlock});
     }
 }
